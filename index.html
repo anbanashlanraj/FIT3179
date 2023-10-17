@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>FIT3179 Data Visualization 2 | Anban Ashlan Raj</title>
+  <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+  <!-- Import pure.css -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+    integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200&family=Urbanist&display=swap" rel="stylesheet">
+
+  <!-- CSS file -->
+  <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+
+</head>
+
+<body>
+
+  <div class="page">
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-1" style="text-align: center;">
+        <h1 style="color: rgb(0, 132, 132);">Navigating the Corporate Cosmos: <br> A Visual Exploration of Forbes Global 2000</h1>
+        <h3>Anban Ashlan Raj<br><br></h3>
+    </div>
+    <div style="display: flex; justify-content: center;">
+      <img src="header.png" style="max-width: 60%; height: auto;">  
+    </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-1" style="text-align: center;">
+        <p>The <strong style="color: rgb(0, 132, 132);">Forbes Global 2000</strong> ranks the largest companies in the world
+          using <strong style="color: rgb(0, 132, 132);">four key indicators</strong> namely sales, profits, assets and market value. The data visualised
+          shows the performance of the countries in 2022 with the <strong style="color: rgb(0, 132, 132);">United States leading</strong> the charts with a
+          whopping <strong style="color: rgb(0, 132, 132);">584 companies</strong> of the 2000, and China coming in second with 297 companies.
+          There are <strong style="color: rgb(0, 132, 132);">57 countries</strong> represented by the publicly traded companies on the Forbes Global 2000 list.</p>
+      </div>
+      <div class="pure-u-1-1" style="display: flex; justify-content: center;">
+        <h2 style="color: rgb(0, 132, 132);">Global Forbes 2000 Map</h2>
+      </div>
+      <div class="pure-u-1-1" style="display: flex; justify-content: center;">
+        <div id="vis4" class="vis-container"></div>
+      </div>
+      <div class="pure-u-1-1" style="text-align: center;">
+        <p>By using the interactive slider, you can <strong style="color: rgb(0, 132, 132);">explore the vast divide</strong> when it comes to market dominance where there are just a handful of
+      companies which dominate the market globally. Note that beyond the 100 companies mark, <strong style="color: rgb(0, 132, 132);">only Japan, China and the U.S.</strong> make it through;
+    attesting to how much geographical influence there is on the global market.</p>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-1" style="display: flex; justify-content: center;">
+        <h2 style="color: rgb(0, 132, 132);">Forbes 2000 Companies by Industry</h2>
+      </div>
+      <div class="pure-u-1-1" style="display: flex; justify-content: center;">
+        <div id="vis3" class="vis-container"></div>
+      </div>
+      <div class="pure-u-1-2" style="text-align: left;">
+        <p>The chart above shows us the breakdown by industry to which the Global 2000 companies belong to. It is clear that the
+        <strong style="color: rgb(0, 132, 132);">banking sector</strong> tops the charts for being the industry with the most number of companies.
+          Among the near-300 companies, 94 of which are from <strong style="color: rgb(0, 132, 132);">East Asia</strong> suggesting a strong dominance of this list from <strong style="color: rgb(0, 132, 132);">financial hubs</strong>
+            such as China and Hong Kong. Retrospectively, Aerospace & Defence seem to be the industry with the least number of companies.</p>
+      </div>
+      <div class="pure-u-1-2" style="text-align: left;">
+        <p>An interesting observation here is that <strong style="color: rgb(0, 132, 132);">the U.S.</strong> which dominated the list overall, <strong style="color: rgb(0, 132, 132);">does not seem to have an excessive influence</strong> on any one industry. At best there 
+            is indication of good performance in Diversified Financials. However, the U.S. does have a <strong style="color: rgb(0, 132, 132);">uniform and balanced presence</strong>
+            across all the industrues unlike most countries. <strong style="color: rgb(0, 132, 132);">Click on each continent name above</strong> to view a highlighted version of the chart to better understand the <strong style="color: rgb(0, 132, 132);">market trend by industry</strong>.</p>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-1" style="text-align: center;">
+        <h2 style="color: rgb(0, 132, 132);">Key Indicators</h2>
+        <p>Moving forward we can see the <strong style="color: rgb(0, 132, 132);">4 important indicators in million $</strong> used by
+          Forbes in determining the list. The breakdown of indicators by continent allows us to see some interesting features.<br><br></p>
+      </div>
+      <div class="pure-u-1-4" style="display: flex; justify-content: center;">
+        <div id="vis1_1" class="vis-container"></div>
+      </div>
+      <div class="pure-u-1-4" style="display: flex; justify-content: center;">
+        <div id="vis1_2" class="vis-container"></div>
+      </div>
+      <div class="pure-u-1-4" style="display: flex; justify-content: center;">
+        <div id="vis1_3" class="vis-container"></div>
+      </div>
+      <div class="pure-u-1-4" style="display: flex; justify-content: center;">
+        <div id="vis1_4" class="vis-container"></div>
+      </div>
+      <div class="pure-u-1-2" style="text-align: left;">
+        <p><br>The <strong style="color: rgb(0, 132, 132);">Sales & Profits</strong> show a decent corelation between each other. From an economic point of view,
+          when the profit margins are greater than the Sales, such as observed in <strong style="color: #006f12;">Middle East</strong> and
+          <strong style="color: #cdb500;">North America</strong>, this simply means the companies within the region are performing exceptionally well.
+        Consequently, some regions such as <strong style="color: #595959;">Western Europe</strong> are infact the opposite with lesser profit margins than sales.</p>
+      </div>
+      <div class="pure-u-1-2" style="text-align: left;">
+        <p><br>The <strong style="color: rgb(0, 132, 132);">Assets & Market Value</strong> indicators give us a surprising revalation; despite the U.S. having lesser than
+          30% of Global 2000 companies, the said companies make up <strong style="color: rgb(0, 132, 132);">more than 50% of the companies' Market Value</strong>. Market Value is a key indicator as it is the measure of
+          market dominance. However, the <strong style="color: #c71233;">East Asia</strong> tops the charts for having the most assets among all other regions.</p>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-1" style="display: flex; justify-content: center;">
+        <h2 style="color: rgb(0, 132, 132);">Sales & Profits Overview</h2>
+      </div>
+      <div class="pure-u-1-1" style="display: flex; justify-content: center;">
+        <div id="vis2" class="vis-container"></div>
+      </div>
+      <div class="pure-u-1-2" style="text-align: left;">
+        <p>The heat map gives us a visual on what the <strong style="color: rgb(0, 132, 132);">general sales and profits balance</strong> is for Forbes 2000 companies.
+          Noting that the values are in $ Millions , we can observe that the maximum count - <strong style="color: rgb(0, 132, 132);">775 companies</strong> - have
+          <strong style="color: rgb(0, 132, 132);">Sales of 0 to $10000 million and Profits of 0 to $5000 Million</strong>.</p>
+      </div>
+      <div class="pure-u-1-2" style="text-align: left;">
+        <p>The <strong style="color: rgb(0, 132, 132);">clustering of smaller values</strong> around this large count is consistent with the 
+          <strong style="color: rgb(0, 132, 132);">general expectation</strong> whereby most companies would be within this range.
+          However, there are some <strong style="color: rgb(0, 132, 132);">high-performing companies</strong> which have significantly larger profit and sales margins;
+          visualised as outlying values.
+        </p>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-1" style="display: flex; justify-content: center;">
+        <h2 style="color: rgb(0, 132, 132);">Top 10 Forbes 2000 Companies</h2>
+      </div>
+      <div class="pure-u-1-2" style="display: flex; justify-content: center;">
+        <div id="vis5" class="vis-container"></div>
+      </div>
+      <div class="pure-u-1-2" style="text-align: left;">
+        <p>Contrary to expectation, <strong style="color: rgb(0, 132, 132);">the #1 company Berkshire Hathaway</strong> does not have the maximum Market Value in the top-10 list; Apple from the U.S. does.
+        Upon observation we can see that <strong style="color: rgb(0, 132, 132);">only 4 countries make up the Top-10 Companies in the world</strong>. Out of this list, 
+        <strong style="color: rgb(0, 132, 132);">the U.S. unsurprisingly dominates</strong> with 5 companies hailing from the country.<br><br>
+        It is also worth noting that the <strong style="color: rgb(0, 132, 132);">Banking industry</strong> makes up a <strong style="color: rgb(0, 132, 132);">large portion of these top-10</strong> companies.
+        The <strong style="color: rgb(0, 132, 132);">second most frequented industry</strong> in the top-10 list is <strong style="color: rgb(0, 132, 132);">Diversified Financials</strong>.
+      </p>
+      </div>
+      <div class="pure-u-1-1" style="text-align: center;">
+        <p>Retrospectively, the Forbes Global 2000 list is <strong style="color: rgb(0, 132, 132);">intriguing and multifaceted</strong> in a variety of aspects.
+          <strong style="color: rgb(0, 132, 132);">Understanding key players in the global economy</strong> such as China and the U.S. which dominate the global market could lead us to 
+          <strong style="color: rgb(0, 132, 132);">better navigate economic, social, and political challenges</strong>.
+        </p>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <div class="pure-g">
+      <div class="pure-u-1-1 small-font" style="text-align: center;">
+        <p><b>Author:</b>  Anban Ashlan Raj | Monash University<br>
+          <b>Datasource:</b> <a href="https://www.kaggle.com/datasets/joebeachcapital/forbes-global-2000"
+            target=" _blank">Link</href></p>
+      </div>
+    </div>
+  </div> <!-- end page -->
+
+  <script type="text/javascript">
+    var specVis1_1 = "./js/sales_donut.json";
+    var specVis1_2 = "./js/profit_donut.json";
+    var specVis1_3 = "./js/assets_donut.json";
+    var specVis1_4 = "./js/marketvalue_donut.json";
+    var specVis2 = "./js/heatmap.json";
+    var specVis3 = "./js/industry_continent_bar.json";
+    var specVis4 = "./js/map.json";
+    var specVis5 = "./js/top10_radialchart.json";
+
+    vegaEmbed('#vis1_1', specVis1_1, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis1_2', specVis1_2, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis1_3', specVis1_3, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis1_4', specVis1_4, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis2', specVis2, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis3', specVis3, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis4', specVis4, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis5', specVis5, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+  </script>
+</body>
+
+</html>
