@@ -1,0 +1,32 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "A simple radial chart of Top 10 Companies",
+    "width":250,
+    "height":240,
+    "data": {
+      "url": "https://raw.githubusercontent.com/anbanashlanraj/FIT3179/main/data/forbes2000.csv"
+    },
+    "transform": [
+      {"filter": {"field": "Rank", "range": [1, 10]}}
+    ],
+    "layer": [{
+      "mark": {"type": "arc", "innerRadius": 20, "stroke": "#fff"}
+    },{
+      "mark": {"type": "text", "radiusOffset": 10}
+    }],
+    "encoding": {
+      "theta": {"field": "MarketValue", "type": "quantitative", "stack": true},
+      "radius": {"field": "MarketValue", "scale": {"type": "sqrt", "zero": true, "rangeMin": 20}},
+      "color":{
+        "field":"Country",
+        "type":"nominal", "scale":{
+          "domain":["China","United States of America","Japan","Saudi Arabia"],
+          "range":["#192655", "#8ECDDD", "#E1AA74", "#F3F0CA", "#3876BF", "#D7E5CA"]
+        }
+      },
+      "tooltip":[{"field":"Company", "type":"nominal"},
+      {"field":"Industry", "type":"nominal"},
+      {"field":"Rank", "type":"nominal"},
+      {"field":"MarketValue", "type":"quantitative"}]
+    }
+  }

@@ -1,0 +1,44 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Bar chart showing the number of occurrences for each type of Industry.",
+    "width":800,
+    "height":400,
+    "data": {
+      "url": "https://raw.githubusercontent.com/anbanashlanraj/FIT3179/main/data/forbes2000.csv"
+    },
+    "params":[
+      {
+        "name": "continent_highlight",
+        "select": {"type": "point", "fields": ["Continent"]},
+        "bind": "legend"
+      }
+    ],
+    "mark":"bar",
+    "encoding":{
+      "x":{
+        "field":"Industry",
+        "type":"nominal",
+        "title":"Industry"
+      },
+      "y":{
+        "aggregate":"count",
+        "type":"quantitative",
+        "title":"Number of Companies",
+        "axis": {"grid": false}
+      },
+      "tooltip":[
+        {"field":"Industry","type":"nominal"},
+        {"field":"Continent","type":"nominal"},
+        {"aggregate":"count","type":"quantitative", "title":"Number of Companies"} 
+      ],
+      "color":{"field":"Continent","type":"nominal","legend":{"orient":"top-right","columns":2}},
+      "opacity": {
+        "condition": {"param": "continent_highlight", "value": 1},
+        "value": 0.2
+      }
+    },
+    "view":{
+      "stroke":"transparent"
+    }
+  }
+  

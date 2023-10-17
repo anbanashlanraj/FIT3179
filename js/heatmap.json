@@ -1,0 +1,33 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Heat map showing the sales and profits",
+    "width": 600,  
+    "height": 300,
+    "data": {
+      "url": "https://raw.githubusercontent.com/anbanashlanraj/FIT3179/main/data/forbes2000.csv"
+    },
+    "mark":"rect",
+    "encoding":{
+      "x":{
+        "field":"Sales",
+        "type":"quantitative",
+        "bin":{"maxbins":100},
+        "title":"Sales (million $)"
+      },
+      "y":{
+        "field":"Profits",
+        "type":"quantitative",
+        "bin":{"maxbins":50},
+        "title":"Profits (million $)"
+      },
+      "color":{
+        "aggregate":"count",
+        "type":"quantitative",
+        "legend":{"title":"Number of Companies"}
+      },
+      "tooltip":[{"aggregate":"count","type":"quantitative","title":"Number of Companies"}]
+    },
+    "view":{
+      "stroke":"transparent"
+    }
+  }

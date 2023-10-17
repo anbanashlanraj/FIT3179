@@ -1,0 +1,93 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Forbes 2000 Companies Profits, Sales, Market Value & Assets by Continent",
+  "data": {
+    "url": "https://raw.githubusercontent.com/anbanashlanraj/FIT3179/main/data/forbes2000.csv"
+  },
+  "transform": [
+    {"aggregate": [
+      {"op": "sum", "field": "Profits", "as": "Total Profits"},
+      {"op":"sum","field":"Sales","as":"Total Sales"},
+      {"op":"sum","field":"MarketValue","as":"Total MarketValue"},
+      {"op":"sum","field":"Assets","as":"Total Assets"}
+    ], 
+    "groupby": ["Continent"]}
+  ],
+  "params":[
+    {
+      "name": "continent_highlight",
+      "select": {"type": "point", "fields": ["Continent"]},
+      "bind": "legend"
+    }
+  ],
+  "hconcat": [
+    {
+      "width": 200,  
+      "height": 200,
+      "mark": {"type": "arc", "innerRadius": 50},
+      "encoding":{
+        "theta":{"field":"Total Profits","type":"quantitative"},
+        "color":{"field":"Continent","type":"nominal"},
+        "tooltip":[
+          {"field":"Continent","type":"nominal"},
+          {"field":"Total Profits","type":"quantitative"}
+        ],
+        "opacity":{
+          "condition":{"param":"continent_highlight","value":1},
+          "value":0.2
+        }
+      }
+    },
+    {
+      "width":200,
+      "height":200,
+      "mark":{"type":"arc","innerRadius":50},
+      "encoding":{
+        "theta":{"field":"Total Sales","type":"quantitative"},
+        "color":{"field":"Continent","type":"nominal"},
+        "tooltip":[
+          {"field":"Continent","type":"nominal"},
+          {"field":"Total Sales","type":"quantitative"}
+        ],
+        "opacity":{
+          "condition":{"param":"continent_highlight","value":1},
+          "value":0.2
+        }
+      }
+    },
+    {
+      "width":200,
+      "height":200,
+      "mark":{"type":"arc","innerRadius":50},
+      "encoding":{
+        "theta":{"field":"Total MarketValue","type":"quantitative"},
+        "color":{"field":"Continent","type":"nominal"},
+        "tooltip":[
+          {"field":"Continent","type":"nominal"},
+          {"field":"Total MarketValue","type":"quantitative"}
+        ],
+        "opacity":{
+          "condition":{"param":"continent_highlight","value":1},
+          "value":0.2
+        }
+      }
+    },
+    {
+      "width":200,
+      "height":200,
+      "mark":{"type":"arc","innerRadius":50},
+      "encoding":{
+        "theta":{"field":"Total Assets","type":"quantitative"},
+        "color":{"field":"Continent","type":"nominal"},
+        "tooltip":[
+          {"field":"Continent","type":"nominal"},
+          {"field":"Total Assets","type":"quantitative"}
+        ],
+        "opacity":{
+          "condition":{"param":"continent_highlight","value":1},
+          "value":0.2
+        }
+      }
+    }
+  ]
+}

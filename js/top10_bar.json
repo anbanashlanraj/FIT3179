@@ -1,0 +1,42 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Bar chart showing the top 10 ranked companies by market value.",
+  "width": 300,  
+  "height": 250,
+  "data": {
+    "url": "https://raw.githubusercontent.com/anbanashlanraj/FIT3179/main/data/forbes2000.csv"
+  },
+  "transform": [
+    {"filter": {"field": "Rank", "range": [1, 10]}}
+  ],
+  "mark":"bar",
+  "encoding":{
+    "x":{
+      "field":"Company",  
+      "type":"nominal",
+      "sort":{"field":"Rank","op":"sum","order":"ascending"}
+    },
+    "y":{
+      "field":"MarketValue",
+      "type":"quantitative",
+      "title":"Market Value",
+      "axis": {"grid": false}
+    },
+    "color":{
+      "field":"Country",
+      "type":"nominal", "scale":{
+        "domain":["China","United States of America","Japan","Saudi Arabia"],
+        "range":["#192655", "#8ECDDD", "#E1AA74", "#F3F0CA", "#3876BF", "#D7E5CA"]
+      }
+    },
+    "tooltip":[
+      {"field":"Industry","type":"nominal"},
+      {"field":"Country","type":"nominal"},
+      {"field":"MarketValue","aggregate":"sum","type":"quantitative"},
+      {"field":"Rank", "type":"quantitative"}
+    ]
+  },
+  "view":{
+    "stroke":"transparent"
+  }
+}
